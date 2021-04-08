@@ -1,4 +1,5 @@
 
+
 import java.util.Scanner;
 
 /*
@@ -13,42 +14,52 @@ import java.util.Scanner;
  */
 public class sort {
     public static void main(String[] args) {
-        //deklarasi array
-        int[] numbers = new int [50];//panjang array
-      
-        Scanner scan = new Scanner(System.in);//scanner unruk mengambil input
-        
-        System.out.println("Masukkan angka");//meanampilkan masukkan angka
-        for(int i = 0; i < numbers.length; i++){//looping
-            numbers[i] = scan.nextInt();
+        //Deklarasi Array bertipe integer dengan nama numbers dengan panjang 50
+        int[] numbers = new int[50];
+
+        //Melakukan perulangan untuk memasukkan nilai kedalam array sebanyak 50 nilai
+        for (int i = 0; i < numbers.length; i++) {
+            //memasukkan kedalam masing2 nilai menggunakan index dengan nilai random
+            //0 - 100
+            numbers[i] = (int) (Math.random() * 100);
+        }
+
+        //Menampilkan Semua data Array
+        System.out.println("Unordered list of my array");
+
+        //Menggunakan Foreach untuk menampilkan data array
+        for (int i : numbers) {
+            System.out.println(i);
         }
         
-        //menampilkan array yang tidak urut
-        System.out.println("Unordered list of my array");//menampilkan Unordered list of my array
-        for(int unorderedArray : numbers){//for each
-            System.out.println(unorderedArray);//menampilkan hasil unorderedArray
-        }
+        //Memanggil method selectionSort
+        selectionSort(numbers);
         
-        //looping agar angka menjadi urut 
-        for(int i = 0; i < numbers.length; i++) {//melooping
-            for (int j = 0; j < numbers.length - 1; j++) {//setiap kali melooping numbers akan dikurangi 1
-                //if the numbers are not in order
-                if (numbers[j] > numbers[j + 1]) {
-                    //swap the numbers
-                    int temp = numbers[j];
-                    numbers[j] = numbers[j + 1];
-                    numbers[j + 1] = temp;   
+         //Menampilkan Semua data Array
+        System.out.println("Ordered list of my array");
+        
+        //Menggunakan Foreach untuk menampilkan data array
+        for (int i : numbers) {
+            System.out.println(i);
+        }
+       
+    }
+    static void selectionSort(int[] numbers) {
+        int indexMin = 0; //the index of the smallest number
+        for (int i = 0; i < numbers.length; i++) {
+            indexMin = i;
+            for (int j = i + 1; j < numbers.length; j++) {
+                if (numbers[j] < numbers[indexMin]) {//if we find a smaller int, 
+                    indexMin = j; //set it as the min
                 }//endif
             }//endfor
+            //we have the index of the smallest int and can swap the values
+            int temp = numbers[i]; //use temp to store the value
+            numbers[i] = numbers[indexMin];
+            numbers[indexMin] = temp;
         }//endfor
-        
-        System.out.println("Ordered list using selesction sort");//menampilkan Ordered list using selesction sort
-        for(int orderedArray : numbers){//for each
-            System.out.println(orderedArray);//menampilkan hasil orderedArray
-        }
-        
-                
+    }//end method selectionSort
 
-        
-    }
+   
 }
+
