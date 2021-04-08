@@ -1,0 +1,43 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author Windows 8.1
+ */
+public class SortExample {
+    public static void main(String[] args) {
+        //mendeklarasikan array
+        int[] numbers = {40, 7, 59, 4, 1};
+        displayValues(numbers);
+        selectionSort(numbers);
+        displayValues(numbers);
+    }//end method main
+    
+    static void selectionSort(int[]numbers){
+        int indexMin = 0;//index terkecil dari number
+        for(int i = 0; i < numbers.length; i++){//looping panjang numbers
+            indexMin = i;//mengatur index min
+            for(int j = i + 1; j < numbers.length; j++){
+                if(numbers[j] < numbers[indexMin]){//jika menemukan int yang lebih kecil
+                    indexMin = j;//atur sebagai min
+                }//end if
+            }//end for
+            //memiliki index jika int terkecil dan bisa menukar nilai
+            int temp = numbers[i];//menggunakan temp untuk menyimpan value
+            numbers[i] = numbers[indexMin];
+            numbers[indexMin] = temp; 
+        }//end for
+    }//end method selectionSort
+    
+    static void displayValues(int[] numbers ){
+        for(int i = 0; i < numbers.length; i++){//looping numbers
+            System.out.print(numbers[i] + " ");
+        }
+        System.out.println("\n");
+    }
+         
+}
